@@ -736,7 +736,9 @@ class ResultSet(ResultBase):
                     raise TimeoutError('join operation timed out')
             value = result.get(
                 timeout=remaining, propagate=propagate,
-                interval=interval, no_ack=no_ack, on_interval=on_interval,
+                interval=interval, no_ack=no_ack,
+                disable_sync_subtasks=disable_sync_subtasks,
+                on_interval=on_interval,
             )
             if callback:
                 callback(result.id, value)
